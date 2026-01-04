@@ -44,7 +44,7 @@ The deployment exposes `/v1/chat/completions` with streaming enabled by default 
   <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare" />
 </a>
 
-If you prefer deploying manually with the Cloudflare CLI, the repository already includes `wrangler.toml` in the project root. Run Wrangler commands from the repo root so it can find the configuration:
+If you prefer deploying manually with the Cloudflare CLI, the repository already includes `wrangler.toml` in the project root **and** a copy in `cloudflare/wrangler.toml` for monorepo-friendly setups. Run Wrangler commands from the repo root (or `cd cloudflare` if you want to use the nested copy) so it can find the configuration:
 
 ```bash
 npm install -g wrangler  # if you do not have it yet
@@ -62,7 +62,7 @@ You can keep a Cloudflare deployment in sync with the repository by adding a Git
    - Optional `BASE_INSTRUCTIONS`: default system instructions for all requests.
 2. Push changes to the `main` branch (or run the workflow manually) to trigger `.github/workflows/cloudflare-deploy.yml`, which runs `wrangler deploy` from the repo root using the secrets above.
 
-The workflow uses the existing `wrangler.toml` so no extra configuration files are required.
+The workflow uses the existing `wrangler.toml` so no extra configuration files are required. If the Cloudflare UI reports it cannot find `wrangler.toml`, set the repository root to `.` when connecting the Git repo, or point it at `cloudflare/` to pick up the nested copy.
 
 ### Mac Users
 

@@ -1,0 +1,6 @@
+name = "chatmock-worker"
+main = "src/index.js"
+compatibility_date = "2025-03-17"
+[vars]
+# Optional default system instructions for upstream requests
+BASE_INSTRUCTIONS = ""

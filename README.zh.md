@@ -43,7 +43,7 @@ Worker 会开启 `/v1/chat/completions` 流式接口，并提供 `/health` 健�
   <img src="https://deploy.workers.cloudflare.com/button" alt="一键部署到 Cloudflare" />
 </a>
 
-如果你想使用 Cloudflare CLI 手动部署，项目根目录已经包含了 `wrangler.toml`。请在仓库根目录运行 Wrangler 命令，确保可以找到配置文件：
+如果你想使用 Cloudflare CLI 手动部署，项目根目录已经包含 `wrangler.toml`，并在 `cloudflare/wrangler.toml` 下提供了相同的配置，方便按子目录部署。请在仓库根目录运行 Wrangler 命令（或 `cd cloudflare` 使用子目录配置），确保可以找到配置文件：
 
 ```bash
 npm install -g wrangler  # 如果还没有安装
@@ -61,7 +61,7 @@ wrangler deploy
    - 可选 `BASE_INSTRUCTIONS`：为所有请求提供的默认系统提示。
 2. 向 `main` 分支推送代码（或手动运行工作流）后，会触发 `.github/workflows/cloudflare-deploy.yml`，在仓库根目录执行 `wrangler deploy` 并使用上述 Secrets。
 
-该工作流直接使用已有的 `wrangler.toml`，无需额外配置文件。
+该工作流直接使用已有的 `wrangler.toml`，无需额外配置文件。如果 Cloudflare 的界面提示找不到 `wrangler.toml`，在关联 Git 仓库时将仓库根目录设置为 `.`，或者选择 `cloudflare/` 让它读取子目录中的配置。
 
 ### macOS
 
