@@ -11,7 +11,7 @@
   </h1>
 
   <p>
-    <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/RayBytes/ChatMock">
+    <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/zhengui666/ChatMock">
       <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare" />
     </a>
   </p>
@@ -40,7 +40,7 @@ Use the button above or the link below to spin up ChatMock on Cloudflare Workers
 
 The deployment exposes `/v1/chat/completions` with streaming enabled by default and includes a `/health` endpoint for quick checks.
 
-<a href="https://deploy.workers.cloudflare.com/?url=https://github.com/RayBytes/ChatMock">
+<a href="https://deploy.workers.cloudflare.com/?url=https://github.com/zhengui666/ChatMock">
   <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare" />
 </a>
 
