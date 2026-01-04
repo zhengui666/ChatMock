@@ -43,6 +43,26 @@ Worker 会开启 `/v1/chat/completions` 流式接口，并提供 `/health` 健�
   <img src="https://deploy.workers.cloudflare.com/button" alt="一键部署到 Cloudflare" />
 </a>
 
+如果你想使用 Cloudflare CLI 手动部署，项目根目录已经包含了 `wrangler.toml`。请在仓库根目录运行 Wrangler 命令，确保可以找到配置文件：
+
+```bash
+npm install -g wrangler  # 如果还没有安装
+wrangler deploy
+```
+
+#### 使用 GitHub Actions 自动部署
+
+你可以通过 GitHub Actions 让 Cloudflare 部署与仓库内容自动保持同步：
+
+1. 在仓库的 Secrets 中添加以下内容，用于身份验证和配置 Worker：
+   - `CLOUDFLARE_ACCOUNT_ID`：你的 Cloudflare 账号 ID。
+   - `CLOUDFLARE_API_TOKEN`：具备 Workers 编辑与部署权限的 API Token。
+   - `CHATGPT_ACCESS_TOKEN` 与 `CHATGPT_ACCOUNT_ID`：与在 Cloudflare 仪表盘中设置的值一致。
+   - 可选 `BASE_INSTRUCTIONS`：为所有请求提供的默认系统提示。
+2. 向 `main` 分支推送代码（或手动运行工作流）后，会触发 `.github/workflows/cloudflare-deploy.yml`，在仓库根目录执行 `wrangler deploy` 并使用上述 Secrets。
+
+该工作流直接使用已有的 `wrangler.toml`，无需额外配置文件。
+
 ### macOS
 
 #### 图形界面
