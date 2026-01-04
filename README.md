@@ -9,7 +9,15 @@
 <a href="https://github.com/RayBytes/ChatMock/blob/master/LICENSE"><img src="https://img.shields.io/github/license/RayBytes/ChatMock?color=2b9348" alt="License Badge"/></a>
 </div>
   </h1>
-  
+
+  <p>
+    <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/RayBytes/ChatMock">
+      <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare" />
+    </a>
+  </p>
+
+  <p>English | <a href="README.zh.md">中文</a></p>
+
   <p><b>OpenAI & Ollama compatible API powered by your ChatGPT plan.</b></p>
   <p>Use your ChatGPT Plus/Pro account to call OpenAI models from code or alternate chat UIs.</p>
   <br>
@@ -21,6 +29,20 @@ ChatMock runs a local server that creates an OpenAI/Ollama compatible API, and r
 This does require a paid ChatGPT account.
 
 ## Quickstart
+
+### One-click deploy to Cloudflare Workers
+
+Use the button above or the link below to spin up ChatMock on Cloudflare Workers. After clicking, set the following secrets in the Cloudflare dashboard:
+
+- `CHATGPT_ACCESS_TOKEN`: your ChatGPT web access token.
+- `CHATGPT_ACCOUNT_ID`: the `chatgpt_account_id` extracted from your ChatGPT ID token.
+- Optional `BASE_INSTRUCTIONS`: custom system instructions to prepend to every request.
+
+The deployment exposes `/v1/chat/completions` with streaming enabled by default and includes a `/health` endpoint for quick checks.
+
+<a href="https://deploy.workers.cloudflare.com/?url=https://github.com/RayBytes/ChatMock">
+  <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare" />
+</a>
 
 ### Mac Users
 
