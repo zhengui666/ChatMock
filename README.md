@@ -44,6 +44,26 @@ The deployment exposes `/v1/chat/completions` with streaming enabled by default 
   <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare" />
 </a>
 
+If you prefer deploying manually with the Cloudflare CLI, the repository already includes `wrangler.toml` in the project root. Run Wrangler commands from the repo root so it can find the configuration:
+
+```bash
+npm install -g wrangler  # if you do not have it yet
+wrangler deploy
+```
+
+#### Automatic deploys with GitHub Actions
+
+You can keep a Cloudflare deployment in sync with the repository by adding a GitHub Actions workflow:
+
+1. Create the following repository secrets so the workflow can authenticate and configure the Worker:
+   - `CLOUDFLARE_ACCOUNT_ID`: your Cloudflare account ID.
+   - `CLOUDFLARE_API_TOKEN`: an API token with permission to edit Workers and deploy.
+   - `CHATGPT_ACCESS_TOKEN` and `CHATGPT_ACCOUNT_ID`: the same values you would add in the Cloudflare dashboard.
+   - Optional `BASE_INSTRUCTIONS`: default system instructions for all requests.
+2. Push changes to the `main` branch (or run the workflow manually) to trigger `.github/workflows/cloudflare-deploy.yml`, which runs `wrangler deploy` from the repo root using the secrets above.
+
+The workflow uses the existing `wrangler.toml` so no extra configuration files are required.
+
 ### Mac Users
 
 #### GUI Application
